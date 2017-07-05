@@ -14,6 +14,7 @@ import coldfusion.eventgateway.GatewayHelper;
 import coldfusion.eventgateway.GatewayServices;
 import coldfusion.eventgateway.Logger;
 
+
 public class RedisSubGateway extends JedisPubSub implements Gateway {
 
 	// The handle to the CF gateway service
@@ -142,7 +143,7 @@ public class RedisSubGateway extends JedisPubSub implements Gateway {
 		jedis = new Jedis(host, port, 500);
 		jedis.connect();
 		if (auth != null)
-			jedis.auth("foobared");
+			jedis.auth(auth);
 		jedis.configSet("timeout", "300");
 		jedis.flushAll();
 		jedis.subscribe(this, channel);
